@@ -1,4 +1,4 @@
-package com.sammidev.pertama;
+package com.sammidev.customer1;
 
 public class App {
     public static void main(String[] args) {
