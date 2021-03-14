@@ -1,9 +1,13 @@
 public class App extends javax.swing.JFrame {
 
-    public App() { initComponents(); }
+    // constructor untuk manggil call komponen utama
+    public App() { 
+        initComponents();
+    }
 
     @SuppressWarnings("unchecked")
     private void initComponents() {
+        // label, field, dan button
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -13,12 +17,15 @@ public class App extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
+        // ketika tombol close ditekan maka akan memberhentikan program
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        // label tadi di set value nya menjadi alas tinggi dan luas
         jLabel1.setText("Alas");
         jLabel2.setText("Tinggi");
         jLabel3.setText("Luas");
 
+        // untuk button hitung set value nya jadi Hitung
         jButton1.setText("Hitung");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -26,6 +33,7 @@ public class App extends javax.swing.JFrame {
             }
         });
 
+          // untuk button reset set value nya jadi Reset
         jButton2.setText("Reset");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -33,6 +41,7 @@ public class App extends javax.swing.JFrame {
             }
         });
 
+        // untuk bikin layout
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,14 +93,21 @@ public class App extends javax.swing.JFrame {
         pack();
     }
 
+    // method hitung luas segitiga
     private void HITUNG(java.awt.event.ActionEvent evt) {
+        // deklarasai
         double Alas,Tinggi,Luas;
+        // parse ke double value yg di input user di field
         Alas = Double.parseDouble(alas.getText());
+        // parse ke double value yg di input user di field
         Tinggi = Double.parseDouble(tinggi.getText());
+        // hitung pake rumus luas segitiga
         Luas = 0.5 * Alas * Tinggi;
+        // set teks menjadi hasil dari luas
         luas.setText(String.valueOf(Luas));
     }
 
+    // method untuk reset semua field jadi kosong
     private void RESET(java.awt.event.ActionEvent evt) {
         alas.setText("");
         tinggi.setText("");
