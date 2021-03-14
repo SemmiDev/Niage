@@ -1,3 +1,5 @@
+package com.sammidev.customer5;
+
 public class App extends javax.swing.JFrame {
 
     // constructor untuk manggil call komponen utama
