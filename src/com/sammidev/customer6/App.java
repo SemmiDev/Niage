@@ -39,7 +39,7 @@ class Student {
                 "NIM         : " + this.nim + "\n" +
                 "Nama        : " + this.nama + "\n" +
                 "Nilai Tugas : " + this.nilaiTugas + " 20%" + "     : " + this.pNilaiTugas + "\n" +
-                "Nilai UTS   : " + this.nilaiUts   + " 25%" + "     : " + this.pNilaiUts   + "\n" +
+                "Nilai UTS   : " + this.nilaiUts   + " 35%" + "     : " + this.pNilaiUts   + "\n" +
                 "Nilai UAS   : " + this.nilaiUas   + " 45%" + "     : " + this.pNilaiUas   + "\n" +
                 "Nilai Akhir : " + this.nilaiAkhir);
     }
