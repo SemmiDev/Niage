@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5fa5ba5b-0ccd-4572-bd78-39d3244d62a7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/sammidev/customer7/soal/SOAL-UTS_TIB04_P.pdf" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Niage/com/sammidev/customer1/App.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Niage/com/sammidev/customer1/App.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Niage/com/sammidev/customer2/main.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Niage/com/sammidev/customer3/App.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Niage/com/sammidev/customer3/result.docx" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Niage/com/sammidev/customer3/result.pdf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Niage/com/sammidev/customer4/main.cpp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Niage/com/sammidev/customer5/App$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Niage/com/sammidev/customer5/App$2.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Niage/com/sammidev/customer5/App$3.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Niage/com/sammidev/customer5/App.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Niage/com/sammidev/customer6/App.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Niage/com/sammidev/customer6/Student.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Niage/com/sammidev/pertama/main.c" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/sammidev/pertama/main.c" afterPath="$PROJECT_DIR$/src/com/sammidev/customer/main.c" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="5fa5ba5b-0ccd-4572-bd78-39d3244d62a7" name="Default" comment="" />
     <ignored path="Niage.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
