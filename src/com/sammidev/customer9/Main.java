@@ -140,7 +140,6 @@ public class Main {
         root.height = Math.max(height(root.left), height(root.right)) + 1;
 
         //  GET THE BALANCE FACTOR OF THIS NODE (to check whether
-        //  this node became unbalanced)
         int balance = getBalance(root);
 
     
@@ -213,7 +212,6 @@ public class Main {
             }
 
             System.out.println();
-            // Print tree node extensions for next level.
             if(i < height - 1) {
 
                 for(Node n : current) {
@@ -233,8 +231,6 @@ public class Main {
                 System.out.println();
 
             }
-
-            // Renewing indicators for next run.
             elements *= 2;
             current = next;
             next = new ArrayList<Node>(elements);
@@ -247,23 +243,23 @@ public class Main {
         Main t = new Main();
         Node root = null;
         while (true) {
-            System.out.println("(1) Insert");
-            System.out.println("(2) Delete");
+            System.out.println("(1) Insert (Masukan)");
+            System.out.println("(2) Delete (Hapus)");
 
             try {
                 BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
                 String s = bufferRead.readLine();
 
                 if (Integer.parseInt(s) == 1) {
-                    System.out.print("Value to be inserted: ");
+                    System.out.print("Masukkan Angka yg ingin dimasukkan: ");
                     root = t.insert(root, Integer.parseInt(bufferRead.readLine()));
                 }
                 else if (Integer.parseInt(s) == 2) {
-                    System.out.print("Value to be deleted: ");
+                    System.out.print("Masukkan angka yang ingin dihapus: ");
                     root = t.deleteNode(root, Integer.parseInt(bufferRead.readLine()));
                 }
                 else {
-                    System.out.println("Invalid choice, try again!");
+                    System.out.println("Pilihan salah, silahkan ulangi!");
                     continue;
                 }
 
