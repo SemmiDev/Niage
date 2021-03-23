@@ -10,11 +10,11 @@ public class CellDriver {
         duaTipeB.setT1(12);
         duaTipeB.setT2(true);
 
-        System.out.println(duaTipeA.getT1);
-        System.out.println(duaTipeA.getT2);
+        System.out.println(duaTipeA.getT1());
+        System.out.println(duaTipeA.getT2());
 
-        System.out.println(duaTipeB.getT1);
-        System.out.println(duaTipeB.getT2);
+        System.out.println(duaTipeB.getT1());
+        System.out.println(duaTipeB.getT2());
     }
 }
 
