@@ -1,4 +1,4 @@
-package com.sammidev.customer11;
+// package com.sammidev.customer11;
 
 public class CellDriver {
     public static void main(String[] args) {
@@ -9,6 +9,8 @@ public class CellDriver {
         DuaTipe<Integer,Boolean> duaTipeB = new DuaTipe<Integer, Boolean>();
         duaTipeB.setT1(12);
         duaTipeB.setT2(true);
+
+        System.out.println(duaTipeA.getT1());
     }
 }
 
