@@ -1,0 +1,6 @@
+Pengenalan Java untuk Pemula,Z010,2010,buku ini mengenalkan bahasa pemograman Java yang sangat basic untuk pemula
+Pengenalan Python,Y012,2014, buku ini memberikan pengenalan Python bagi umat awam yang masi belum cukup dimengerti.
+Matlab, M1022,2011, buku ini berisi pedoman untuk mempelajari aplikasi matlab secara cepat dan beberapa tools yang dapat digunakan dalam aplikasi matlab
+TOEFL, MT123, 2019, buku ini memberikan pengenalan dan contoh soal TOEFL sebagai persiapan peserta yang akan mengikuti Ujian TOEFL
+Convolutional Neural Network, CNN120, 2020, buku ini memberikan detail tentang CNN sehinga untuk pembaca yang masi beginner akan susah untuk memahami buku ini
+Matematika Sederhana, MT290, 2000, Buku ini memberikan alternatif kepada mahasiswa yang pemahaman matematikannya kurang.
