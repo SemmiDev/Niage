@@ -86,13 +86,7 @@ void bacaMhs(){
 	printf("\nMembaca identitas sejumlah Mahasiswa\n");
 	printf("========================================\n");
 	for(int i = 0; i < N; i++){
-        cout << "Masukkan NAMA Mahasiswa: " << endl;
-        cout << "USAGE : " << endl;
-        cout << "  1. firstname" << endl;
-        cout << "  2. firstname_lastname" << endl;
-        cout << "  3. firstname_middlename_lastname" << endl;
-        cout << "  3. firstname_middlename_lastname_others" << endl;
-        cout << "     :";
+        cout << "Masukkan NAMA Mahasiswa: ( pisahkan dengan _ )" << endl;
         cin >> nama;
 
 		cout << "Masukkan NIM : ";
