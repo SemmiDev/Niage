@@ -57,14 +57,23 @@ int main(int argc, char const *argv[]){
     string inputNama;
     string inputNIM;
 
-    cout << "Pencarian bedasarkan nama : ";
-    cin >> inputNama;
-    searchingByName(dataMhs, inputNama);
+    for (int i = 0; i < N; i++)
+    {
+        cout << "Pencarian bedasarkan nama : ";
+        cin >> inputNama;
+        searchingByName(dataMhs, inputNama);
+        cout << endl << endl;
+    }
 
-    cout << "Pencarian bedasarkan NIM : ";
-    cin >> inputNIM;
-    searchingByNIM(dataMhs, inputNIM);
 
+    for (int i = 0; i < N; i++)
+    {
+        cout << "Pencarian bedasarkan NIM : ";
+        cin >> inputNIM;
+        searchingByNIM(dataMhs, inputNIM);
+        cout << endl << endl;
+    }
+    
     return 0;
 }
 
@@ -86,7 +95,7 @@ void bacaMhs(){
 	printf("\nMembaca identitas sejumlah Mahasiswa\n");
 	printf("========================================\n");
 	for(int i = 0; i < N; i++){
-        cout << "Masukkan NAMA Mahasiswa: ( pisahkan dengan _ )" << endl;
+        cout << "Masukkan NAMA Mahasiswa: ( pisahkan dengan _ ) : ";
         cin >> nama;
 
 		cout << "Masukkan NIM : ";
