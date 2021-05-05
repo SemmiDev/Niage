@@ -88,6 +88,9 @@ void judul(){
 
 
 void bacaMhs(){
+    char namanya[100];
+    char nimnya[50];
+
     string nama;
     string namawithspace;
     string nim;
@@ -95,15 +98,25 @@ void bacaMhs(){
 	printf("\nMembaca identitas sejumlah Mahasiswa\n");
 	printf("========================================\n");
 	for(int i = 0; i < N; i++){
-        cout << "Masukkan NAMA Mahasiswa: ( pisahkan dengan _ ) : ";
-        cin >> nama;
 
-		cout << "Masukkan NIM : ";
-		cin >> nim;
+        printf("Masukkan NAMA Mahasiswa: ");
+		gets(namanya); fflush(stdin);
+		
+        printf("Masukan NIM : ");
+		gets(nimnya); fflush(stdin); 
 
-        namawithspace = underscoreToSpace(nama);
+        // cout << "Masukkan NAMA Mahasiswa: ( pisahkan dengan _ ) : ";
+        // cin >> nama;
 
-		dataMhs[i].mhs.nama = namawithspace; 
+		// cout << "Masukkan NIM : ";
+		// cin >> nim;
+
+        // namawithspace = underscoreToSpace(nama);
+
+        nama = string(namanya);
+        nim = string(nimnya);
+
+		dataMhs[i].mhs.nama = nama; 
 		dataMhs[i].mhs.nim = nim;
 		
         bacaNilai(i);
