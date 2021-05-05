@@ -10,6 +10,12 @@ using namespace std;
 
 #define N 3
 
+
+
+// karena fitir gets sudah depricated, oleh karena itu diganti dengan listen input dari console dengan cara yang biasa
+// yaitu menggunakan cin, tetapi hanya bisa listen 1 string, oleh karena itu untuk memisahkan antar nama digunakan underscore(_)
+// dan kemudian underscore diganti dengan spasi menggunakan sebuah method khusus  
+
 typedef struct MHS{
 	string nama; 
 	string nim;  
@@ -87,8 +93,9 @@ void saveMhs() {
     for (int i = 0; i < N; i++)
     {
 
-        a_size = sizeof(dataMhsTemp[i].mhs.nama) / sizeof(char);
-        s_a = convertToString(dataMhsTemp[i].mhs.nama, a_size);
+        convertNama = string(dataMhsTemp[i].mhs.nama)
+        // a_size = sizeof(dataMhsTemp[i].mhs.nama) / sizeof(char);
+        // s_a = convertToString(dataMhsTemp[i].mhs.nama, a_size);
         
         dataMhs[i].mhs.nama = s_a;
         dataMhs[i].mhs.nama = dataMhsTemp[i].mhs.nim;
