@@ -30,6 +30,7 @@ typedef struct NILAI{
  } DATAMHS;
 
 void judul();
+saveMhs()
 string underscoreToSpace(string text);
 void searchingByNIM(DATAMHS dataMhs[], string matchNIM);
 void searchingByName(DATAMHS dataMhs[], string matchName);
@@ -41,11 +42,13 @@ double hitungAkhir(double tugas, double absen, double uts, double uas);
 char konversiHuruf(double na);
 
 DATAMHS dataMhs[N];
+DATAMHS dataMhsTemp[N];
 
 int main(int argc, char const *argv[]){
 
     judul();    
     bacaMhs();
+    saveMhs()
 	
     for(int i = 0; i < N; i++){
 		infoMhs(i);
@@ -77,6 +80,21 @@ int main(int argc, char const *argv[]){
     return 0;
 }
 
+void saveMhs() {
+    string convertNama;
+    int a_size;
+    string s_a;
+    for (int i = 0; i < N; i++)
+    {
+
+        a_size = sizeof(dataMhsTemp[i].mhs.nama) / sizeof(char);
+        s_a = convertToString(dataMhsTemp[i].mhs.nama, a_size);
+        
+        dataMhs[i].mhs.nama = s_a;
+        dataMhs[i].mhs.nama = dataMhsTemp[i].mhs.nim;
+    }
+}
+
 void judul(){
 	printf("=================================================================\n");
 	printf("\t\t\t SELAMAT DATANG\t\t\t \n");
@@ -85,7 +103,6 @@ void judul(){
 	printf("=================================================================\n");
 	printf("Dibuat oleh : ADELYA AMANDA \n");    
 }
-
 
 void bacaMhs(){
     char namanya[100];
@@ -105,6 +122,9 @@ void bacaMhs(){
         printf("Masukan NIM : ");
 		gets(nimnya); fflush(stdin); 
 
+        strcpy(dataMhsTemp[i].mhs.nama, namanya); 
+        strcpy(dataMhsTemp[i].mhs.nama, namanya); 
+
         // cout << "Masukkan NAMA Mahasiswa: ( pisahkan dengan _ ) : ";
         // cin >> nama;
 
@@ -112,15 +132,18 @@ void bacaMhs(){
 		// cin >> nim;
 
         // namawithspace = underscoreToSpace(nama);
-
-        nama = string(namanya);
-        nim = string(nimnya);
-
-		dataMhs[i].mhs.nama = nama; 
-		dataMhs[i].mhs.nim = nim;
-		
         bacaNilai(i);
 	}
+}
+
+string convertToString(char* a, int size)
+{
+    int i;
+    string s = "";
+    for (i = 0; i < size; i++) {
+        s = s + a[i];
+    }
+    return s;
 }
 
 string underscoreToSpace(string text){
