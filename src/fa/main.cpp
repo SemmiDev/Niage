@@ -102,8 +102,14 @@ int main(int argc, char const *argv[])
     
     sortingMhs(dataMhs);
 
-    searchingByName(dataMhs, "ren");
-    searchingByNIM(dataMhs, "2003113949");
+	char nameSearch[] = "sam";
+	char nimSearch[] = "2003113949";
+
+    string searchName = string(nameSearch);
+    string searchNim = string(nimSearch);
+
+    searchingByName(dataMhs, searchName);
+    searchingByNIM(dataMhs, searchNim);
 
     return 0;
 }
@@ -186,3 +192,4 @@ char konversiHuruf(double na){
 	
 	return nHurufnya;	
 }
+
