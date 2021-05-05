@@ -4,10 +4,11 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <sstream>
 
 using namespace std;
 
-#define N 3 
+#define N 3
 
 typedef struct MHS{
 	string nama; 
@@ -29,6 +30,7 @@ typedef struct NILAI{
  } DATAMHS;
 
 void judul();
+string underscoreToSpace(string text);
 void searchingByNIM(DATAMHS dataMhs[], string matchNIM);
 void searchingByName(DATAMHS dataMhs[], string matchName);
 void sortingMhs(DATAMHS dataMhs[]);
@@ -38,80 +40,125 @@ void infoMhs(int i);
 double hitungAkhir(double tugas, double absen, double uts, double uas);
 char konversiHuruf(double na);
 
-int main(int argc, char const *argv[])
-{
-    
-    DATAMHS dataMhs[N];
+DATAMHS dataMhs[N];
 
-    dataMhs[0].mhs.nama = "sammi 1";
-    dataMhs[0].mhs.nim = "2003113948";
-    dataMhs[0].nilai.uas = 100; 
-    dataMhs[0].nilai.uts = 40; 
-    dataMhs[0].nilai.tugas = 40; 
-    dataMhs[0].nilai.absen = 20;
+int main(int argc, char const *argv[]){
 
-
-    dataMhs[1].mhs.nama = "faren 2";
-    dataMhs[1].mhs.nim = "2003113949";
-    dataMhs[1].nilai.uts = 100; 
-    dataMhs[1].nilai.tugas = 70; 
-    dataMhs[1].nilai.absen = 60;
-    dataMhs[1].nilai.uas = 70; 
-
-    dataMhs[2].mhs.nama = "devin 3";
-    dataMhs[2].mhs.nim = "2003113950";
-    dataMhs[2].nilai.uas = 20; 
-    dataMhs[2].nilai.uts = 30; 
-    dataMhs[2].nilai.tugas = 40; 
-    dataMhs[2].nilai.absen = 40;
-
-    double nAkhirnya1 = hitungAkhir(dataMhs[0].nilai.uas, dataMhs[0].nilai.uts, dataMhs[0].nilai.tugas, dataMhs[0].nilai.absen);
-    char nHurufnya1 = konversiHuruf(nAkhirnya1);	
-
-    double nAkhirnya2 = hitungAkhir(dataMhs[1].nilai.uas, dataMhs[1].nilai.uts, dataMhs[1].nilai.tugas, dataMhs[1].nilai.absen);
-    char nHurufnya2 = konversiHuruf(nAkhirnya2);	
-    
-    double nAkhirnya3 = hitungAkhir(dataMhs[2].nilai.uas, dataMhs[2].nilai.uts, dataMhs[2].nilai.tugas, dataMhs[2].nilai.absen);
-    char nHurufnya3 = konversiHuruf(nAkhirnya3);	
-    
-    dataMhs[0].nilai.nAkhir = nAkhirnya1;
-    dataMhs[0].nilai.nHuruf = nHurufnya1;
-
-    dataMhs[1].nilai.nAkhir = nAkhirnya2;
-    dataMhs[1].nilai.nHuruf = nHurufnya2;
-
-    dataMhs[2].nilai.nAkhir = nAkhirnya3;
-    dataMhs[2].nilai.nHuruf = nHurufnya3;
-
-
-    cout << "Nama Mahasiswa  : " <<  dataMhs[0].mhs.nama << endl;
-    cout << "Nomor induk mahasiswa  : " <<  dataMhs[0].mhs.nim << endl;
-    cout << "Nilai Akhir  : " <<  dataMhs[0].nilai.nAkhir << endl;
-    cout << "Nilai Huruf  : " <<  dataMhs[0].nilai.nHuruf << endl << endl;
-    
-
-    cout << "Nama Mahasiswa  : " <<  dataMhs[1].mhs.nama << endl;
-    cout << "Nomor induk mahasiswa  : " <<  dataMhs[1].mhs.nim << endl;
-    cout << "Nilai Akhir  : " <<  dataMhs[1].nilai.nAkhir << endl;
-    cout << "Nilai Huruf  : " <<  dataMhs[1].nilai.nHuruf << endl << endl;
-
-    cout << "Nama Mahasiswa  : " <<  dataMhs[2].mhs.nama << endl;
-    cout << "Nomor induk mahasiswa  : " <<  dataMhs[2].mhs.nim << endl;
-    cout << "Nilai Akhir  : " <<  dataMhs[2].nilai.nAkhir << endl;
-    cout << "Nilai Huruf  : " <<  dataMhs[2].nilai.nHuruf << endl;
+    judul();    
+    bacaMhs();
+	
+    for(int i = 0; i < N; i++){
+		infoMhs(i);
+		printf("\n");
+	}
     
     sortingMhs(dataMhs);
 
-	char nameSearch[] = "sam";
-	char nimSearch[] = "2003113949";
+    string inputNama;
+    string inputNIM;
 
-    string searchName = string(nameSearch);
-    string searchNim = string(nimSearch);
+    cout << "Pencarian bedasarkan nama : ";
+    cin >> inputNama;
+    searchingByName(dataMhs, inputNama);
 
-    searchingByName(dataMhs, searchName);
-    searchingByNIM(dataMhs, searchNim);
+    cout << "Pencarian bedasarkan NIM : ";
+    cin >> inputNIM;
+    searchingByNIM(dataMhs, inputNIM);
 
     return 0;
+}
+
+void judul(){
+	printf("=================================================================\n");
+	printf("\t\t\t SELAMAT DATANG\t\t\t \n");
+	printf("\t\t PROGRAM MENGHITUNG NILAI AKHIR\t\t \n");
+	printf("\t MAHASISWA PENGANTAR CODING UNIVERSITAS NEGERI PADANG \t \n");
+	printf("=================================================================\n");
+	printf("Dibuat oleh : ADELYA AMANDA \n");    
+}
+
+
+void bacaMhs(){
+    string nama;
+    string namawithspace;
+    string nim;
+
+	printf("\nMembaca identitas sejumlah Mahasiswa\n");
+	printf("========================================\n");
+	for(int i = 0; i < N; i++){
+        cout << "Masukkan NAMA Mahasiswa: " << endl;
+        cout << "USAGE : " << endl;
+        cout << "  1. firstname" << endl;
+        cout << "  2. firstname_lastname" << endl;
+        cout << "  3. firstname_middlename_lastname" << endl;
+        cout << "  3. firstname_middlename_lastname_others" << endl;
+        cout << "     :";
+        cin >> nama;
+
+		cout << "Masukkan NIM : ";
+		cin >> nim;
+
+        namawithspace = underscoreToSpace(nama);
+
+		dataMhs[i].mhs.nama = namawithspace; 
+		dataMhs[i].mhs.nim = nim;
+		
+        bacaNilai(i);
+	}
+}
+
+string underscoreToSpace(string text){
+    for(int i = 0; i < text.length(); i++)
+    {
+        if(text[i] == '_')
+            text[i] = ' ';
+    }
+    return text;
+}
+
+void bacaNilai(int i){
+	double uasnya, utsnya, tugasnya, absennya, nAkhirnya;
+	char nHurufnya;
+
+	cout << "Masukkan nilai UAS : ";
+	cin >> uasnya;
+
+    cout << "Masukkan nilai UTS : ";
+	cin >> utsnya;
+    
+	cout << "Masukkan nilai Tugas : ";
+    cin >> tugasnya;
+
+	cout << "Masukkan nilai Absen : ";
+    cin >> absennya;
+
+	dataMhs[i].nilai.uas = uasnya; 
+	dataMhs[i].nilai.uts = utsnya; 
+	dataMhs[i].nilai.tugas = tugasnya; 
+	dataMhs[i].nilai.absen = absennya;
+
+	nAkhirnya = hitungAkhir(uasnya, utsnya, tugasnya, absennya);
+	nHurufnya = konversiHuruf(nAkhirnya);
+
+	dataMhs[i].nilai.nAkhir = nAkhirnya;
+	dataMhs[i].nilai.nHuruf = nHurufnya;
+	
+    cout << endl;
+}
+
+void infoMhs(int i){
+
+	printf("\nInformasi Identitas Mahasiswa\n");
+	printf("========================================\n");
+
+    for (int i = 0; i < N; i++)
+    {
+        cout << "Nama Mahasiswa  : " << dataMhs[i].mhs.nama << endl;
+        cout << "Nomor induk mahasiswa :" << dataMhs[i].mhs.nim << endl;
+        cout << "Nilai Akhir   : " << dataMhs[i].nilai.nAkhir << endl;
+        cout << "Nilai Huruf   : " << dataMhs[i].nilai.nHuruf << endl;
+        cout << "========================================" << endl;
+    }
 }
 
 void searchingByName(DATAMHS dataMhs[], string matchName) {
@@ -144,7 +191,7 @@ void searchingByNIM(DATAMHS dataMhs[], string matchNIM) {
 
 void sortingMhs(DATAMHS dataMhs[]) {
     cout << "===================================================================" << endl;
-    cout << "SORTING DESC BY NILAI " << endl;
+    cout << "SORTING MAHASISWA DESC BY NILAI " << endl;
     cout << "===================================================================" << endl;
     double nilaiMhs[N];
 
@@ -152,11 +199,9 @@ void sortingMhs(DATAMHS dataMhs[]) {
         nilaiMhs[i] = dataMhs[i].nilai.nAkhir;
     }
 
-    // Sort the array in descending order
     sort(nilaiMhs, nilaiMhs + N, greater<double>());
   
-    // Print the desc sorted array
-    cout << "\nDescending Sorted Array:\n";
+      cout << "\nDescending Sorted Array:\n";
     for (int i = 0; i < N; i++){
         for (int j = 0; j < N; j++){
             if (nilaiMhs[i] == dataMhs[j].nilai.nAkhir){
@@ -171,16 +216,13 @@ void sortingMhs(DATAMHS dataMhs[]) {
 }
 
 double hitungAkhir(double tugas, double absen, double uts, double uas){
-	double nAkhirnya;
-	
-	nAkhirnya =tugas * 0.2 + absen * 0.1 + uts * 0.3 + uas * 0.4;
-	return nAkhirnya;
+	return tugas * 0.2 + absen * 0.1 + uts * 0.3 + uas * 0.4;
 }
 
 char konversiHuruf(double na){
 	char nHurufnya;
 
-	if((na >= 85.0) && (na<= 100.0))
+	if((na >= 85.0) && (na <= 100.0))
 		nHurufnya = 'A';
 	else if(na >= 70.0)
 		nHurufnya = 'B';
@@ -192,4 +234,3 @@ char konversiHuruf(double na){
 	
 	return nHurufnya;	
 }
-
