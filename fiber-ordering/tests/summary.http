@@ -1,0 +1,268 @@
+### CREATE A CUSTOMER
+POST http://localhost:9090/api/v1/customer
+Content-Type: application/json
+
+{
+  "full_name": "Sammi Aldhi Yanto",
+  "email": "sammidev4@gmail.com",
+  "phone_number": "082288788571",
+  "username": "sammidev",
+  "password": "sammidev"
+}
+
+### LOGIN
+POST http://localhost:9090/api/v1/login
+Content-Type: application/x-www-form-urlencoded
+
+email=sammidev4@gmail.com&password=sammidev
+
+### -------------------- CATEGORIES ---------------------
+### CREATE CATEGORIE
+POST http://localhost:9090/api/v1/product/category
+Content-Type: application/json
+Accept: application/json
+
+{
+  "product_category_name": "Clothing"
+}
+
+### CREATE CATEGORIE
+POST http://localhost:9090/api/v1/product/category
+Content-Type: application/json
+Accept: application/json
+
+{
+  "product_category_name": "Bags"
+}
+
+### CREATE CATEGORIE
+POST http://localhost:9090/api/v1/product/category
+Content-Type: application/json
+Accept: application/json
+
+{
+  "product_category_name": "Shoes"
+}
+
+### -------------------- PRODUCTS ---------------------
+### CREATE PRODUCT
+POST http://localhost:9090/api/v1/product
+Content-Type: application/json
+
+{
+  "product_code": "A-01",
+  "product_name": "Micchele Oversized White",
+  "product_image": "3a.jpg",
+  "product_price": 180000,
+  "product_category_id": 1,
+  "product_status": true
+}
+
+### CREATE PRODUCT
+POST http://localhost:9090/api/v1/product
+Content-Type: application/json
+
+{
+  "product_code": "A-03",
+  "product_name": "Miley Blouse",
+  "product_image": "3c.jpg",
+  "product_price": 90000,
+  "product_category_id": 1,
+  "product_status": true
+}
+
+### CREATE PRODUCT
+POST http://localhost:9090/api/v1/product
+Content-Type: application/json
+
+{
+  "product_code": "A-04",
+  "product_name": "Mini Stripe Blouse",
+  "product_image": "3d.jpg",
+  "product_price": 20000,
+  "product_category_id": 1,
+  "product_status": true
+}
+
+### CREATE PRODUCT
+POST http://localhost:9090/api/v1/product
+Content-Type: application/json
+
+{
+  "product_code": "A-05",
+  "product_name": "Mini Stripe Blouse",
+  "product_image": "3d.jpg",
+  "product_price": 20000,
+  "product_category_id": 1,
+  "product_status": true
+}
+
+### CREATE PRODUCT
+POST http://localhost:9090/api/v1/product
+Content-Type: application/json
+
+{
+  "product_code": "B-01",
+  "product_name": "Molly Bags",
+  "product_image": "3d.jpg",
+  "product_price": 75000,
+  "product_category_id": 2,
+  "product_status": true
+}
+
+### -------------------- ORDERS ---------------------
+### CREATE ORDER
+POST http://localhost:9090/api/v1/order
+Content-Type: application/json
+
+{
+  "customer_id": 1
+}
+
+### CREATE ORDER DETAILS
+POST http://localhost:9090/api/v1/order/1/details
+Content-Type: application/json
+
+{
+  "product_id": 1,
+  "quantity": 10
+}
+
+### getAllOrders
+GET http://localhost:9090/api/v1/order
+Content-Type: application/json
+
+### getOrderByCustomer
+GET http://localhost:9090/api/v1/order/customer/1
+Accept: application/json
+
+### getOrderDetailByID
+GET http://localhost:9090/api/v1/order/detail/1
+Accept: application/json
+
+### CREATE ORDER
+POST http://localhost:9090/api/v1/order
+Content-Type: application/json
+
+{
+  "customer_id": 1
+}
+
+### CREATE ORDER DETAILS
+POST http://localhost:9090/api/v1/order/2/details
+Content-Type: application/json
+
+{
+  "product_id": 2,
+  "quantity": 5
+}
+
+### getOrderByID
+GET http://localhost:9090/api/v1/order/1
+Accept: application/json
+
+### getAllOrders
+GET http://localhost:9090/api/v1/order
+Content-Type: application/json
+
+### getOrderByCustomer
+GET http://localhost:9090/api/v1/order/customer/1
+Accept: application/json
+
+### getOrderDetailByID
+GET http://localhost:9090/api/v1/order/detail/2
+Accept: application/json
+
+### getOrderByCustomer
+GET http://localhost:9090/api/v1/order/customer/1
+Accept: application/json
+
+### CREATE A CUSTOMER
+POST http://localhost:9090/api/v1/customer
+Content-Type: application/json
+
+{
+  "full_name": "sammidev",
+  "email": "sammidev@gmail.com",
+  "phone_number": "082288788571",
+  "username": "sammidev",
+  "password": "sammidev"
+}
+
+### LOGIN
+POST http://localhost:9090/api/v1/login
+Content-Type: application/x-www-form-urlencoded
+
+email=sammidev@gmail.com&password=sammidev
+
+
+### CREATE ORDER
+POST http://localhost:9090/api/v1/order
+Content-Type: application/json
+
+{
+  "customer_id": 2
+}
+
+### CREATE ORDER DETAILS
+POST http://localhost:9090/api/v1/order/3/details
+Content-Type: application/json
+
+{
+  "product_id": 1,
+  "quantity": 10
+}
+
+### CREATE A CUSTOMER
+POST http://localhost:9090/api/v1/customer
+Content-Type: application/json
+
+{
+  "full_name": "sam",
+  "email": "sam@gmail.com",
+  "phone_number": "082288788571",
+  "username": "sam",
+  "password": "sam"
+}
+
+### CREATE ORDER
+POST http://localhost:9090/api/v1/order
+Content-Type: application/json
+
+{
+  "customer_id": 3
+}
+
+### CREATE ORDER DETAILS
+POST http://localhost:9090/api/v1/order/4/details
+Content-Type: application/json
+
+{
+  "product_id": 1,
+  "quantity": 5
+}
+
+### CREATE ORDER
+POST http://localhost:9090/api/v1/order
+Content-Type: application/json
+
+{
+  "customer_id": 2
+}
+
+### CREATE ORDER DETAILS
+POST http://localhost:9090/api/v1/order/6/details
+Content-Type: application/json
+
+{
+  "product_id": 2,
+  "quantity": 2
+}
+
+### getOrderByCustomer
+GET http://localhost:9090/api/v1/order/customer/2
+Accept: application/json
+
+### getOrderWithDetails
+GET http://localhost:9090/api/v1/order/4/details
+Accept: application/json

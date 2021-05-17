@@ -1,0 +1,39 @@
+### LOGIN
+POST http://localhost:9090/api/v1/login
+Content-Type: application/x-www-form-urlencoded
+
+email=sammidev4@gmail.com&password=sammidev
+
+### GET CUSTOMERS
+GET http://localhost:9090/api/v1/customer
+Content-Type: application/json
+
+### GET CUSTOMER BY ID
+GET http://localhost:9090/api/v1/customer/1
+Content-Type: application/json
+
+### UPDATE CUSTOMER
+PUT http://localhost:9090/api/v1/customer/4
+Content-Type: application/json
+
+{
+  "full_name": "sam",
+  "email": "sam@gmail.com",
+  "phone_number": "082288788570"
+}
+
+### CREATE A CUSTOMER
+POST http://localhost:9090/api/v1/customer
+Content-Type: application/json
+
+{
+  "full_name": "Sammi Aldhi Yanto",
+  "email": "sammidev4@gmail.com",
+  "phone_number": "082288788571",
+  "username": "sammidev",
+  "password": "sammidev"
+}
+
+### DELETE A CUSTOMER BY ID
+DELETE http://localhost:9090/api/v1/customer/1
+Content-Type: application/json

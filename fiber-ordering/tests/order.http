@@ -1,0 +1,58 @@
+### getAllOrders
+GET http://localhost:9090/api/v1/order
+Content-Type: application/json
+
+### createOrder
+POST http://localhost:9090/api/v1/order
+Content-Type: application/json
+
+{
+  "customer_id": 1,
+  "total_price": 1000
+}
+
+### getOrderByID
+GET http://localhost:9090/api/v1/order/2
+Accept: application/json
+
+### getOrderWithDetails
+GET http://localhost:9090/api/v1/order/3/details
+Accept: application/json
+
+### createOrderDetail
+POST http://localhost:9090/api/v1/order/3/details
+Content-Type: application/json
+
+{
+  "product_id": 1,
+  "quantity": 3,
+  "total_price": 50000
+}
+
+### getOrderDetailByID
+GET http://localhost:9090/api/v1/order/detail/3
+Accept: application/json
+
+### getOrderByCustomer
+GET http://localhost:9090/api/v1/order/customer/1
+Accept: application/json
+
+### updateOrderPrice
+PUT http://localhost:9090/api/v1/order/1/price
+Accept: application/json
+
+### updateOrderDetailPrice
+PUT http://localhost:9090/api/v1/order/3/price
+Accept: application/json
+
+### deleteOrderByID
+DELETE http://localhost:9090/api/v1/order/3
+Accept: application/json
+
+### deleteOrderDetailByID
+DELETE http://localhost:9090/api/v1/order/detail/3
+Accept: application/json
+
+### getOrderByCustomer
+GET http://localhost:9090/api/v1/order/customer/2
+Accept: application/json

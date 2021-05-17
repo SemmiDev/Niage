@@ -1,0 +1,20 @@
+### getAllCarts
+GET http://localhost:9090/api/v1/cart
+Accept: application/json
+
+### createCart
+POST http://localhost:9090/api/v1/cart
+Content-Type: application/json
+
+{
+  "quantity": 10,
+  "product_id": 1
+}
+
+### getCartByID
+GET http://localhost:9090/api/v1/cart/1
+Accept: application/json
+
+### update price from cart
+PUT http://localhost:9090/api/v1/cart/3/update
+Accept: application/json
