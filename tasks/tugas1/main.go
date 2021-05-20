@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strconv"
 )
 
 const NMAX int = 1000
@@ -20,11 +19,16 @@ type (
 	}
 )
 
-var durations []Waktu
 var PlayList []Lagu
+var durations []Waktu
+
+func main() {
+	buatPlaylist()
+	cetakPlaylist()
+}
 
 // SUB PROGRAM PENGISIAN PLAYLIST
-func inputLagu()  {
+func buatPlaylist()  {
 	var judul, penyanyi string
 	var menit, detik int
 
@@ -58,7 +62,7 @@ func inputLagu()  {
 			durations = append(durations, waktu)
 
 			// BUAT PLAYLIST
-			buatPlaylist(lagu)
+			saveLagu(lagu)
 		}
 	}
 }
@@ -72,7 +76,7 @@ func findDuplikasi(lagu Lagu) bool {
 	return false
 }
 
-func buatPlaylist(l Lagu) {
+func saveLagu(l Lagu) {
 	PlayList = append(PlayList, l)
 }
 
@@ -80,7 +84,8 @@ func buatPlaylist(l Lagu) {
 func cetakPlaylist()  {
 	for i , v := range PlayList {
 		if i == durasiTerlama() {
-			fmt.Println("*" + v.Judul + " " +  strconv.Itoa(v.Durasi.Menit) +  " menit " + strconv.Itoa(v.Durasi.Detik) +  " detik")
+			show := fmt.Sprintf("*%s %d menit %d detik",v.Judul, v.Durasi.Menit, v.Durasi.Detik )
+			fmt.Println(show)
 			continue
 		}
 		fmt.Println(v.Judul)
@@ -105,9 +110,4 @@ func durasiTerlama() int {
 // UTILITAS MENIT TO DETIK
 func convertToSeconds(waktu Waktu) int {
 	return (waktu.Menit * 60) + waktu.Detik
-}
-
-func main() {
-	inputLagu()
-	cetakPlaylist()
 }
