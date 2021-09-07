@@ -4,9 +4,7 @@ import java.util.*;
 public class Lab1 {
     private static InputReader in = new InputReader(System.in);
     private static PrintWriter out = new PrintWriter(System.out);
-    private static List<Integer> hasilPenjumlahan = new ArrayList<Integer>();
-    private static List<Integer> highlight= new ArrayList<>();
-    private static  int[] results;
+    
 
     /**
      * The main method that reads input, calls the function 
@@ -30,9 +28,7 @@ public class Lab1 {
     }
 
     public static int getMaxMoney(int N, int M, List<String> sequence) {
-        // int result = 0;
-        int size = 0;
-
+   
         // constraint 1
         if ((N >= M) || (N < 2) || (M > 300000) ) {
             System.exit(1);
@@ -65,56 +61,38 @@ public class Lab1 {
                 System.exit(1);
             }
         }
+        
 
-        // sum of numbers among 2 star(*)
-        int lastStar = 0;
-        int total = 0;
-        boolean isStar;
-
-        for (int i = 1; i < sequence.size(); i++) {
-            isStar = sequence.get(i).equalsIgnoreCase("*");
-            if (isStar) {
-                for (int j = lastStar+1; j < i; j++) {
-                    total += Integer.parseInt(sequence.get(j));
-                }
-                highlight.add(total);
-                total = 0;
-                lastStar = i;
+        int[] temps = new int[N-1];
+        int tempsIndex = 0;
+        int sell = 0;
+        for (int i = 1; i < M; i++){
+            if (sequence.get(i).equals("*")){
+                temps[tempsIndex] = sell;
+                tempsIndex += 1;
+                sell = 0;
+            }
+            else {
+                sell += Integer.parseInt(sequence.get(i));
             }
         }
-        hasilPenjumlahan.addAll(highlight);
-        int loop = 1;
-        for (int i = 0; i < highlight.size()-1; i++) {
-            combine(loop, highlight);
-            loop++;
-        }
-        size = hasilPenjumlahan.size();
-        results = hasilPenjumlahan.stream().mapToInt(i -> i).toArray();
-        if (size <= 1000) {
-            Arrays.sort(results);
-        }else {
-            Arrays.parallelSort(results);
-        }
-        return results[results.length-1];
-    }
-
-    static void combine(int r, List<Integer> numbers) {
-        int total = 0;
-        int con = r;
-
-        for (int i = 0; i < numbers.size(); i++) {
-            for (int j = i; j <= con; j++) {
-                if (con >= numbers.size()) {
-                    return;
+        int result = temps[0];
+        int jumlah = temps[0];    
+        for (int j = 1; j < temps.length; j++){
+            if (result < 0 && temps[j] > result){
+                result = temps[j];
+                jumlah = temps[j];
+            } else if (result >= 0){
+                jumlah += temps[j];
+                if (jumlah > result) {
+                    result = jumlah; 
                 }
-                total += numbers.get(j);
             }
-            hasilPenjumlahan.add(total);
-            total = 0;
-            con++;
         }
+        return result;
     }
 
+   
     static class InputReader {
         public BufferedReader reader;
         public StringTokenizer tokenizer;
