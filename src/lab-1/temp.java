@@ -5,8 +5,8 @@ public class Lab1 {
     private static InputReader in = new InputReader(System.in);
     private static PrintWriter out = new PrintWriter(System.out);
     private static List<Integer> hasilPenjumlahan = new ArrayList<Integer>();
-    private static List<Integer> highlight= new ArrayList<Integer>();
-    private static  Object[] results;
+    private static List<Integer> highlight= new ArrayList<>();
+    private static  int[] results;
 
     /**
      * The main method that reads input, calls the function 
@@ -30,7 +30,8 @@ public class Lab1 {
     }
 
     public static int getMaxMoney(int N, int M, List<String> sequence) {
-//        int result = 0;
+        // int result = 0;
+        int size = 0;
 
         // constraint 1
         if ((N >= M) || (N < 2) || (M > 300000) ) {
@@ -38,30 +39,41 @@ public class Lab1 {
         }
 
         // constraint 2
+        int value;
         for (int i = 1; i < sequence.size()-1; i++) {
             if (!sequence.get(i).equalsIgnoreCase("*")) {
-                if ((Integer.parseInt(sequence.get(i)) < -1000) || (Integer.parseInt(sequence.get(i)) > 1000)) {
+                value = Integer.parseInt(sequence.get(i));
+                if ((value < -1000) || (value > 1000)) {
                     System.exit(1);
                 }
             }
         }
 
         // constraint 3
-        if ((sequence.get(0).equalsIgnoreCase("*") && (sequence.get(sequence.size() - 1).equalsIgnoreCase("*"))) == false) {
+        boolean starPrefix = sequence.get(0).equalsIgnoreCase("*");
+        boolean starSuffix = sequence.get(sequence.size() - 1).equalsIgnoreCase("*");
+        if (!(starPrefix && starSuffix)) {
             System.exit(1);
         }
 
         // constraint 4
+        boolean before, after;
         for (int i = 0; i < sequence.size()-1; i++) {
-            if ((sequence.get(i).equalsIgnoreCase("*") && sequence.get(i+1).equalsIgnoreCase("*"))) {
+            before = sequence.get(i).equalsIgnoreCase("*");
+            after = sequence.get(i+1).equalsIgnoreCase("*");
+            if (before && after) {
                 System.exit(1);
             }
         }
 
+        // sum of numbers among 2 star(*)
         int lastStar = 0;
         int total = 0;
+        boolean isStar;
+
         for (int i = 1; i < sequence.size(); i++) {
-            if (sequence.get(i).equalsIgnoreCase("*")) {
+            isStar = sequence.get(i).equalsIgnoreCase("*");
+            if (isStar) {
                 for (int j = lastStar+1; j < i; j++) {
                     total += Integer.parseInt(sequence.get(j));
                 }
@@ -70,19 +82,20 @@ public class Lab1 {
                 lastStar = i;
             }
         }
-
         hasilPenjumlahan.addAll(highlight);
         int loop = 1;
         for (int i = 0; i < highlight.size()-1; i++) {
             combine(loop, highlight);
             loop++;
         }
-
-//        IntSummaryStatistics intStats = hasilPenjumlahan.stream().mapToInt((x) ->x).summaryStatistics();
-        results = hasilPenjumlahan.toArray();
-        Arrays.sort(results);
-//        result = (int) results[results.length-1];
-        return (int) results[results.length-1];
+        size = hasilPenjumlahan.size();
+        results = hasilPenjumlahan.stream().mapToInt(i -> i).toArray();
+        if (size <= 1000) {
+            Arrays.sort(results);
+        }else {
+            Arrays.parallelSort(results);
+        }
+        return results[results.length-1];
     }
 
     static void combine(int r, List<Integer> numbers) {
