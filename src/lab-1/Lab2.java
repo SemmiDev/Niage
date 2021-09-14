@@ -7,66 +7,62 @@ import java.io.PrintWriter;
 import java.util.*;
 
 class Lab2 {
-
     private static InputReader in;
     private static PrintWriter out;
 
     static ArrayList<String> antrians = new ArrayList<>();
     static ArrayList<String> antriansTool = new ArrayList<>();
 
-    // TODO
     static int totalDatang= 0;
     static private int handleDatang(String Gi, int Xi) {
         antrians.add(Gi + "_" + Xi);
         antriansTool.add(Gi + "_" + Xi);
         totalDatang += Xi;
-
         return totalDatang;
     }
 
-    // TODO
     static private String handleLayani(int Yi) {
         int temp = 0;
         int c = 0;
+        String [] r;
+        int elapsed;
+        int antriansSize = antrians.size();
 
-        for (int i = 0; i < antrians.size(); i++) {
-            String [] r = antrians.get(i).split("_");
+        for (int i = 0; i < antriansSize; i++) {
+            r = antrians.get(i).split("_");
             temp += Integer.parseInt(r[1]);
 
-            int elapsed = temp - Yi;
+            elapsed = temp - Yi;
             if (elapsed >= 0 ){
                 antrians.set(i, r[0] + "_" + elapsed);
                 totalDatang -= Yi;
-
                 return r[0];
             }
-
             antrians.set(i, r[0] + "_" + 0);
             continue;
         }
         return "";
     }
 
-    // TODO
     static private int handleTotal(String Gi) {
         int total = 0;
         String[] data;
         String[] firstData;
+        int dataConvert;
+        int firstDataConvert;
 
-        for (int i = 0; i < antrians.size(); i++) {
+        int antriansSize = antrians.size();
+        for (int i = 0; i < antriansSize; i++) {
             data = antrians.get(i).split("_");
             firstData = antriansTool.get(i).split("_");
 
-            if (data[0].equalsIgnoreCase(Gi)) {
-                int dataConvert = Integer.parseInt(data[1]);
-                int firstDataConvert = Integer.parseInt(firstData[1]);
-
-                if (dataConvert != firstDataConvert) {
-                    if (dataConvert == 0) {
-                        total += firstDataConvert;
-                    }else {
-                        total += firstDataConvert - dataConvert;
-                    }
+            dataConvert = Integer.parseInt(data[1]);
+            firstDataConvert = Integer.parseInt(firstData[1]);
+            if ((data[0].equalsIgnoreCase(Gi)) && (dataConvert != firstDataConvert)) {       
+                if (dataConvert == 0) {
+                    total += firstDataConvert;
+                }else {
+                    total += firstDataConvert - dataConvert;
                 }
             }
         }
@@ -74,7 +70,6 @@ class Lab2 {
     }
 
     public static void main(String args[]) throws IOException {
-
         InputStream inputStream = System.in;
         in = new InputReader(inputStream);
         OutputStream outputStream = System.out;
