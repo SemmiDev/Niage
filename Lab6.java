@@ -41,9 +41,11 @@ class Lab6 {
                 int max = 0;
 
                 if (indexMin == 0) {
-                    max = Collections.max(
-                        List.of(tanah.get(indexMin), tanah.get(indexMin+1))
-                    );
+                    List<Integer> temp = new ArrayList<Integer>();
+                    temp.add(tanah.get(indexMin));
+                    temp.add(tanah.get(indexMin+1));
+
+                    max = Collections.max(temp);
                     tanah.set(indexMin, max);
                     if (indexMin < N-1) {
                         tanah.set(indexMin + 1, max);
@@ -51,9 +53,12 @@ class Lab6 {
                 }
                 
                 if (indexMin > 0) {
-                    max = Collections.max(
-                        List.of(tanah.get(indexMin-1), tanah.get(indexMin), tanah.get(indexMin+1))
-                    );
+                    List<Integer> temp = new ArrayList<Integer>();
+                    temp.add(tanah.get(indexMin-1));
+                    temp.add(tanah.get(indexMin));
+                    temp.add(tanah.get(indexMin+1));
+                    max = Collections.max(temp);
+                    
                     tanah.set(indexMin-1, max);
                     tanah.set(indexMin, max);
                     if (indexMin < N-1) {
