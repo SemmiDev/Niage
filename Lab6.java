@@ -21,6 +21,7 @@ class Lab6 {
         StringBuilder output = new StringBuilder();
 
         int N = in.nextInt();
+        int size = N;
         for (int i = 0; i < N; i++) {
             int height = in.nextInt();
             tanah.add(height);
@@ -33,10 +34,11 @@ class Lab6 {
             if (query.equals("A")) {
                 y = in.nextInt();
                 tanah.add(y);
+                size = tanah.size();
             } else if (query.equals("U")) {
                 x = in.nextInt();
                 y = in.nextInt();
-                if (x >= 0 && x < (N-1)) {
+                if (x >= 0 && x < size) {
                     tanah.set(x,y);
                 }
             } else {
