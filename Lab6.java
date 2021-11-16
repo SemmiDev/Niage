@@ -6,7 +6,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.*;
 
-class Lab6 {
+public class Lab6 {
     private static InputReader in;
     private static PrintWriter out;
 
@@ -21,65 +21,72 @@ class Lab6 {
         StringBuilder output = new StringBuilder();
 
         int N = in.nextInt();
-        int size = N;
         for (int i = 0; i < N; i++) {
             int height = in.nextInt();
             tanah.add(height);
         }
 
-        int x,y,min,max,indexMin;
+        int x,y,min,max,indexMin,size;
+        int first;
+        int second;
+        int third;
+
         int Q = in.nextInt();
         while(Q-- > 0) {
+            first = -1;
+            second = -1;
+            third = -1;
+            
             String query = in.next();
             if (query.equals("A")) {
                 y = in.nextInt();
                 tanah.add(y);
-                size = tanah.size();
+                // show(tanah);
             } else if (query.equals("U")) {
                 x = in.nextInt();
                 y = in.nextInt();
+                size = tanah.size();
                 if (x >= 0 && x < size) {
                     tanah.set(x,y);
                 }
+                // show(tanah);
             } else {
                 min = Collections.min(tanah);
                 indexMin = tanah.indexOf(min);
                 max = 0;
 
-                int first = -1;
-                int second = -1;
-                int third = -1;
-
                 temp = new ArrayList<Integer>();
                 try {
                     first = tanah.get(indexMin);
-                }catch (Exception e) {}
-                try {
-                   second = tanah.get(indexMin-1);
-                }catch (Exception e) {}
-                try {
-                   third = tanah.get(indexMin+1);
-                }catch (Exception e) {}
-
-                if (first != -1) {
                     temp.add(first);
-                }
-                if (second != -1) {
+                    // show(tanah);
+                }catch(Exception e) {}
+
+                try {
+                    second = tanah.get(indexMin-1);
                     temp.add(second);
-                }
-                if (third != -1) {
+                    // show(tanah);
+                }catch(Exception e) {}
+
+                try {
+                    third = tanah.get(indexMin+1);
                     temp.add(third);
-                }
+                    // show(tanah);
+                }catch(Exception e) {}
 
                 max = Collections.max(temp);
+
                 if (first != -1) {
                     tanah.set(indexMin, max);
+                    // show(tanah);
                 }
                 if (second != -1) {
                     tanah.set(indexMin-1, max);
+                    // show(tanah);
                 }
                 if (third != -1) {
                     tanah.set(indexMin+1, max);
+                    // show(tanah);
                 }
 
                 output.append(max).append(" ").append(indexMin).append("\n");
@@ -87,6 +94,13 @@ class Lab6 {
         }
         System.out.println(output);
         out.flush();
+    }
+
+    static void show(List<Integer> tanah) {
+        for (int x : tanah) {
+            System.out.print(x);
+        }
+        System.out.println();
     }
 
     static class InputReader {
